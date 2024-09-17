@@ -1,6 +1,5 @@
 tautan menuju aplikasi PWS yang sudah di-deploy: http://rizki-hidayatul-icecreamy.pbp.cs.ui.ac.id/
 
-Jawab:
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
    - Hal pertama yang saya lakukan adalah membuat sebuah direktori utama lokal yang diberi nama ice_creamy. 
    - Kemudian, saya membuat dan mengaktifkan virtual environment.
