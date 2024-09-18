@@ -43,7 +43,8 @@ sources: https://sohaibanser.medium.com/django-orm-pros-and-cons-8ab069598c1b
 
 
 #TUGAS 3#
-##1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?##
+
+1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
 Data delivery diperlukan dalam implementasi sebuah platform karena memungkinkan pertukaran informasi/data antara server dengan pengguna (seperti aplikasi web atau mobile). Pada umumnya, platform terdiri dari beberapa begian yang saling terhubung dan berkomunikasi. Data Delivery digunakan agar setiap bagian ini dapat saling berkomunikasi.
 Misalnya, ketika user mengirimkan informasi/data (misalnya mengisi form), server akan menerima, memproses, lalu mengirimkan respons kepada pengguna. Tanpa adanya data delivery, setiap bagian pada platform tidak dapat bekerja dengan optimal karena tidak dapat berbagi informasi.
 Selain itu, data delivery mempunyai peran penting dalam implementasi sebuah platform, diantaranya yaitu:
@@ -52,7 +53,7 @@ Selain itu, data delivery mempunyai peran penting dalam implementasi sebuah plat
 - Integrasi Data. Data delivery yang efektif memastikan bahwa komunikasi antara platform dengan sistem lain berjalan dengan lancar.
 - Keamanan data: Data delivery yang baik mencakup enkripsi dan perlindungan data saat dalam proses pengirimannya.
 
-##2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?##
+2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
 Menurut saya, JSON lebih baik dari pada XML. Alasan mengapa JSON lebih populer menurut saya yaitu:
 - Syntax yang lebih simple.  JSON memiliki struktur yang lebih ringkas daripada XML.  JSON menggunakan kurung kurawal {} untuk objek dan tanda kurung siku []untuk array, yang membuatnya ringkas dan jelas. Sebaliknya, XML menggunakan tag pembuka dan penutup seperti <tag></tag>, yang membuatnya lebih panjang dan tidak seefisien JSON.
 - Ukuran JSON lebih kecil. Karena sytax yang lebih sederhana dan simple, file JSON biasanya lebih kecil ukurannya dari pada xml. Sehingga, pengiriman data lebih cepat dan hemat bandwidth. Dalam pengembangan aplikasi web dan mobile, sering kali bekerja dengan data dalam jumlah besar, sehingga hal ini menjadi perlu diperhatikan.
@@ -60,14 +61,14 @@ Menurut saya, JSON lebih baik dari pada XML. Alasan mengapa JSON lebih populer m
 - Selain itu, JSON juga lebih kompatibel dengan banyak bahasa pemrograman sehingga bagus untuk digunakan dalam banyak platform
 source: https://www.directual.com/blog/json-and-xml-which-one-is-better-for-no-coders
 
-##3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?##
+3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
 Kita memerlukan method is_valid() pada form Django untuk memvalidasi/memeriksa apakah data yang dikirimkan melalui form sudah benar sesuai aturan yang ditentukan. Jika datanya valid, is_valid() akan mengembalikan True dan menyediakan data yang bersih (cleaned data) untuk diproses lebih lanjut. Hal ini diperlukan agar aplikasi hanya menerima data yang benar (yang sudah diproses oleh method is_valid) sebelum di proses, seperti disimpan ke database. Hal ini dapat mencegah kesalahan atau masalah keamanan.
 
-##4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?##
+4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
 csrf_token dibutuhkan saat membuat form di Django karena csrf_token penting untuk menlindungi dari serangan CSRF (Cross-Site Request Forgery). csrf_token bekerja dengan memastikan setiap permintaan yang adamodifikasi data berasal dari sumber yang benar. Tanpa validasi csrf_token, aplikasi Django tidak bisa membedakan antara permintaan dari pengguna dan permintaan berbahaya dari pihak ketiga. Dengan hal ini, aplikasi menjadi lebih aman dari serangan yang memanfaatkan user session yang sah tanpa sepengatahuan user.
 source: https://www.geeksforgeeks.org/csrf-token-in-django/ 
 
-##5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).##
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 Pada tugas ini, saya diminta untuk membuat input form dan menambahkan 4 fungsi views baru untuk melihat objek yang sudah ditambahkan dalam format XML, JSON, XML by ID, dan JSON by ID, serta membuat routing URL di masing-masing views.
 Berikut langkah-langkah yang saya kerjakan:
 a. Membuat forms.py di direktori main untuk membuat form input data Product menggunakan field ['name', 'price', 'description', 'quantity', 'stock', 'rating'].
