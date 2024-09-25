@@ -1,5 +1,6 @@
 tautan menuju aplikasi PWS yang sudah di-deploy: http://rizki-hidayatul-icecreamy.pbp.cs.ui.ac.id/
 
+<<<<<<< HEAD
 #TUGAS 2#
 ##1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).##
 - Hal pertama yang saya lakukan adalah membuat sebuah direktori utama lokal yang diberi nama ice_creamy. 
@@ -15,6 +16,22 @@ tautan menuju aplikasi PWS yang sudah di-deploy: http://rizki-hidayatul-icecream
 - Kemudian, membuat views. Melakukan integrasi model, views, dan template pada berkas 'views.py'. Fungsinya untuk mengatur http agar dapat mengembalikan tampilan yang sesuai. Lalu melakukan modifikasi pada template agar dapat menampilkan data.
 - Melakukan routing URL. Menambahkan 'urls.py' pada direktori main agar dapat mengambil modul main views sebagai tampilan ketika mengakses url. 
 - Terakhir, saya mengecek website saya melalui local host dengan menjalankan server django. Kebetulan tidak terjadi error, sehingga saya tidak perlu melakukan trouble shooting. ><
+=======
+1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+   - Hal pertama yang saya lakukan adalah membuat sebuah direktori utama lokal yang diberi nama ice_creamy. 
+   - Kemudian, saya membuat dan mengaktifkan virtual environment.
+   - Setelah itu, saya membuat file requirements.txt yang diisi dengan beberapa dependencies dan melakukan instalasi terhadap dependencies tersebut.
+   - Kemudian saya meng-Setup Proyek Django. Melakukan instalasi django dan membuat project ice_creamy dengan perintah 'django-admin startproject ice_creamy'. 
+   - Menambahkan Berkas .gitignore yang digunakan sebagai konfigurasi pada repositori git untuk memilah berkas apa saja yang perlu diabaikan ketika nanti dipush
+   - Setting Github dengan nama seperti direktori sebelumnya yaitu ice_creamy. Kemudian saya menginisiasi direktori lokal ice_creamy sebagai repositori git. Setelah itu melakukan add, commit, dan push dari direktori lokal
+   - Langkah selanjutnya yaitu membuat Aplikasi Django dengan nama 'main' dan mendaftarkan aplikasi di 'settings.py' agar Django dapat mengenali aplikasi tersebut.
+   - Setelah membuat aplikasi django, saya membuat berkas template html, lalu mengisinya dengan berkas main.html
+   - Membuat Model. Mengubah berkas 'models.py' sesuai dengan ketentuan soal. 
+   - Setelah itu, melakukan migrasi model agar perubahan model yang terjadi dapat diketahui oleh server.
+   - Kemudian, membuat views. Melakukan integrasi model, views, dan template pada berkas 'views.py'. Fungsinya untuk mengatur http agar dapat mengembalikan tampilan yang sesuai. Lalu melakukan modifikasi pada template agar dapat menampilkan data.
+   - Melakukan routing URL. Menambahkan 'urls.py' pada direktori main agar dapat mengambil modul main views sebagai tampilan ketika mengakses url. 
+   - Terakhir, saya mengecek website saya melalui local host dengan menjalankan server django. Kebetulan tidak terjadi error, sehingga saya tidak perlu melakukan trouble shooting. ><
+>>>>>>> 087350dbb7e3a2f8becf8609b0aa815cd44e9425
 
 ##2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.##
 <img src="bagan_no2.jpg" width="1802" height="330">
@@ -40,6 +57,7 @@ sources: https://revou.co/kosakata/django , https://www-netguru-com.translate.go
 ##5. Mengapa model pada Django disebut sebagai ORM?##
 Model pada Django disebut sebagai ORM (Object-Relational Mapper) karena Django menggunakan ORM untuk mempermudah interaksi antara kode Python dan basis data. Dalam ORM Django, data dari basis data diubah menjadi objek Python, yang lebih mudah dimanipulasi. Ini berarti bahwa tabel dan kolom dalam database dipetakan menjadi kelas dan atribut Python, sehingga kita dapat melakukan operasi database seperti menyimpan, mengambil, memperbarui, atau menghapus data hanya dengan menggunakan sintaks Python, tanpa perlu menulis SQL secara eksplisit.
 sources: https://sohaibanser.medium.com/django-orm-pros-and-cons-8ab069598c1b 
+<<<<<<< HEAD
 
 
 #TUGAS 3#
@@ -93,3 +111,5 @@ show xml by id
 
 show json by id
 <img src="postman_json_id.png" width="1440" height="900">
+=======
+>>>>>>> 087350dbb7e3a2f8becf8609b0aa815cd44e9425
