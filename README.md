@@ -173,15 +173,15 @@ TUGAS 5
 -	Inline styles: Gaya yang langsung diterapkan pada elemen HTML melalui atribut style.
    Contoh:
    ` <div style="color: red;"></div> `
--	IDs: Selector yang menggunakan ID elemen, ditulis dengan symbol
+-	IDs: Selector yang menggunakan ID elemen, ditulis dengan symbol.
    Contoh:
    ` #myId { color: red; } `
--	Classes, Attributes, dan Pseudo-classes: Selector yang menggunakan class (.className), atribut ([attribute=value]), atau pseudo-class seperti :hover dan :focus
+-	Classes, Attributes, dan Pseudo-classes: Selector yang menggunakan class. (.className), atribut ([attribute=value]), atau pseudo-class seperti :hover dan :focus
    Contoh:
    ` .myClass { color: red; } `
--	Elements dan Pseudo-elements: Selector yang menggunakan nama tag HTML (seperti div, p) atau pseudo-element seperti ::before dan ::after
+-	Elements dan Pseudo-elements: Selector yang menggunakan nama tag HTML (seperti div, p) atau pseudo-element seperti ::before dan ::after.
    Contoh:
-   ` myClass { color: red; } `
+   `     div { color: green; } `
 -	Universal Selector -> Selector universal (*), yang diterapkan untuk semua elemen, dan memiliki prioritas paling rendah.
    Contoh:
    `{ margin: 0; }`
@@ -192,8 +192,9 @@ TUGAS 5
 Menurut saya, responsive desain menjadi konsep yang penting dalam web development karena dengan ini, memmungkinkan sebuah web untuk menyesuaikan UI nya dengan berbagai ukuran layer, mulai dari layer handphone, pc, tab ataupun laptop. Dengan responsive design, kita dapat meningkatkan user experience yang kita berikan seperti memudahkan user membaca suatu informasi. Selain itu, responsive design juga dapat meningkatkan pengoptimalisasian search engine, karena memiliki satu URL untuk semua device, hal ini akan menguntungkan karena Google memprioritaskan mobile-friendly website untuk ranking website mereka. Selain itu dari sisi developer, responsive design satu set kode dapat digunakan untuk semua perangkat, sehingga dapat mempercepat kinerja dan kecepatan kerja.
 
 Contoh aplikasi yang sudah menerapkan responsive design: https://aws.amazon.co, https://shopee.co.id/, youtube.com, dll (biasanya aplikasi besar yang sudah punya kredibilitas). 
+
 Contoh aplikasi yang belum menerapkan responsive design:
-https://main.semarangkab.go.id/ , 'https://jatengprov.go.id/'
+https://main.semarangkab.go.id/ , https://jatengprov.go.id/
 
 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
 ![image](https://github.com/user-attachments/assets/bd562a41-4c77-4e8c-abd5-5afcbc528583)
@@ -207,6 +208,7 @@ Border adalah garis yang mengelilingi elemen, berfungsi untuk membatasi elemen d
 
 - Padding:
 Padding adalah ruang di dalam elemen, antara konten utama (teks atau gambar) dan garis batas (border) elemen. Padding membantu mengatur jarak antara konten dengan tepi elemen, sehingga membuat konten terlihat lebih rapi dan tidak terlalu mepet dengan batas elemen. Misalnya, padding: 10px; berarti memberikan jarak 10 piksel di dalam elemen dari setiap sisi. Sama seperti margin, padding juga bisa diatur per sisi, seperti padding-top, padding-right, padding-bottom, dan padding-left. Nilai padding mempengaruhi ukuran elemen secara keseluruhan, karena menambah ruang di dalam elemen.
+
 Secara visual, urutannya adalah sebagai berikut:
 Margin (paling luar) → Border → Padding → Konten (paling dalam).
 
