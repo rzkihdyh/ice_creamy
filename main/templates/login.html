@@ -1,32 +1,52 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta %}
 <title>Login</title>
 {% endblock meta %}
 
 {% block content %}
-<div class="login">
-  <h1>Login</h1>
+<div class="bg-[#fafafa] font-family-karla h-screen flex items-center justify-center">
 
-  <form method="POST" action="">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input class="btn login_btn" type="submit" value="Login" /></td>
-      </tr>
-    </table>
-  </form>
+    <div class="w-10/12 lg:w-8/12 xl:w-6/12 flex shadow-2xl">
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %} Don't have an account yet?
-  <a href="{% url 'main:register' %}">Register Now</a>
+        <!-- Login Section -->
+        <div class="w-full lg:w-1/2 flex flex-col p-8 bg-white rounded-l-lg">
+
+            <div class="flex flex-col justify-center my-auto space-y-6">
+                <p class="text-center text-2xl text-gray-800 font-bold">Welcome back 👋</p>
+                <p class="text-center text-gray-500">Please Log In with Your Account</p>
+
+                <!-- Form -->
+                <form class="flex flex-col space-y-4 pt-4" method="POST" action="">
+                    {% csrf_token %}
+                    <div>
+                        <input id="username" name="username" type="text" placeholder="Username" required
+                            class="shadow-sm border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+
+                    <div>
+                        <input id="password" name="password" type="password" placeholder="Password" required
+                            class="shadow-sm border border-gray-300 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+
+                    <input type="submit" value="Log In" class="bg-[#f7b733] text-white font-bold text-lg hover:bg-[#ff9900] py-2 mt-8 rounded-full">
+                </form>
+
+                <!-- Register Link -->
+                <div class="text-center pt-8">
+                    <p class="text-gray-600">Don't have an account? <a href="{% url 'main:register' %}"
+                            class="underline font-semibold text-[#f7b733] hover:text-[#ff9900]">Sign up</a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Image Section -->
+        <div class="w-1/2 hidden lg:block">
+            <img class="object-cover w-full h-full rounded-r-lg" src="{% static 'image/loginpage.jpg' %}">
+        </div>
+    </div>
+
 </div>
-
 {% endblock content %}

@@ -1,0 +1,43 @@
+<div class="relative break-inside-avoid">
+  <!-- Card Container -->
+  <div class="relative top-5 bg-[#ffe5b4] shadow-md rounded-lg mb-6 break-inside-avoid flex flex-col border-2 border-[#ffcc80] transform rotate-1 hover:rotate-0 transition-transform duration-300">
+    
+    <!-- Product Body -->
+    <div class="p-4">
+      <h3 class="font-bold text-xl mb-2">{{ product.name }}</h3>
+      <p class="font-bold text-xl mb-2">Rp{{ product.price }}</p>
+      
+      <!-- Product Description -->
+      <p class="font-semibold text-lg mb-2">Product Description</p>
+      <p class="text-gray-700 mb-2">
+        <span class="bg-[linear-gradient(to_bottom,transparent_0%,transparent_calc(100%_-_1px),#ffcc80_calc(100%_-_1px))] bg-[length:100%_1.5rem] pb-1">{{ product.description }}</span>
+      </p>
+
+      <!-- Stock and Rating -->
+      <div class="mt-4">
+        <!-- Stock (Not bold) -->
+        <p class="text-gray-700 mb-2">Stock: {{ product.stock }}</p>
+        
+        <!-- Rating with Stars -->
+        <div class="flex items-center">
+          <!-- Star Icon next to Rating -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#ff9800] mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674h4.917c.96 0 1.36 1.24.588 1.81l-3.977 2.887 1.518 4.674c.3.921-.755 1.688-1.54 1.156L10 13.719l-3.977 2.887c-.784.532-1.839-.235-1.54-1.156l1.518-4.674L2.524 9.411c-.772-.57-.372-1.81.588-1.81h4.917l1.518-4.674z" />
+          </svg>
+          <!-- Display Rating as Decimal -->
+          <p class="text-gray-700">{{ product.rating|floatformat:1 }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit and Delete Buttons at Bottom Right -->
+  <div class="absolute bottom-2 right-2 flex space-x-1">
+      <a href="{% url 'main:edit_product' product.pk %}" class="bg-[#ff7043] hover:bg-[#ff7043]/80 text-white rounded-full p-2 transition duration-300 shadow-md">
+      Edit
+      </a>
+      <a href="{% url 'main:delete_product' product.pk %}" class="bg-[#ff9800] hover:bg-[#f57c00] text-white rounded-full p-2 transition duration-300 shadow-md">
+      Delete
+    </a>
+  </div>
+</div>
