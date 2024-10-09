@@ -167,4 +167,74 @@ Berikut langkah yang saya lakukan:
 7. Migrate: Setelah semua langkah selesai, migrasi dibuat dan diuji dengan menjalankan server lokal. 
 8. Push kode ke GitHub.
 
+TUGAS 5
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+
+-	Inline styles: Gaya yang langsung diterapkan pada elemen HTML melalui atribut style.
+   Contoh:
+   ` <div style="color: red;"></div> `
+-	IDs: Selector yang menggunakan ID elemen, ditulis dengan symbol.
+   Contoh:
+   ` #myId { color: red; } `
+-	Classes, Attributes, dan Pseudo-classes: Selector yang menggunakan class. (.className), atribut ([attribute=value]), atau pseudo-class seperti :hover dan :focus
+   Contoh:
+   ` .myClass { color: red; } `
+-	Elements dan Pseudo-elements: Selector yang menggunakan nama tag HTML (seperti div, p) atau pseudo-element seperti ::before dan ::after.
+   Contoh:
+   `     div { color: green; } `
+-	Universal Selector -> Selector universal (*), yang diterapkan untuk semua elemen, dan memiliki prioritas paling rendah.
+   Contoh:
+   `{ margin: 0; }`
+
+   
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+
+Menurut saya, responsive desain menjadi konsep yang penting dalam web development karena dengan ini, memmungkinkan sebuah web untuk menyesuaikan UI nya dengan berbagai ukuran layer, mulai dari layer handphone, pc, tab ataupun laptop. Dengan responsive design, kita dapat meningkatkan user experience yang kita berikan seperti memudahkan user membaca suatu informasi. Selain itu, responsive design juga dapat meningkatkan pengoptimalisasian search engine, karena memiliki satu URL untuk semua device, hal ini akan menguntungkan karena Google memprioritaskan mobile-friendly website untuk ranking website mereka. Selain itu dari sisi developer, responsive design satu set kode dapat digunakan untuk semua perangkat, sehingga dapat mempercepat kinerja dan kecepatan kerja.
+
+Contoh aplikasi yang sudah menerapkan responsive design: https://aws.amazon.co, https://shopee.co.id/, youtube.com, dll (biasanya aplikasi besar yang sudah punya kredibilitas). 
+
+Contoh aplikasi yang belum menerapkan responsive design:
+https://main.semarangkab.go.id/ , https://jatengprov.go.id/
+
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+![image](https://github.com/user-attachments/assets/bd562a41-4c77-4e8c-abd5-5afcbc528583)
+Margin, border, dan padding adalah tiga properti CSS yang digunakan untuk mengatur ruang di sekitar elemen HTML.
+
+- Margin:
+Margin adalah ruang kosong di luar batas (border) elemen. Properti ini digunakan untuk memberikan jarak antar elemen yang berbeda di halaman. Ketika margin diatur, elemen akan tampak lebih terpisah dari elemen-elemen di sekitarnya. Misalnya, margin: 10px; akan menambahkan jarak 10 piksel di luar batas elemen dari setiap sisi (atas, kanan, bawah, dan kiri). Nilai margin dapat diatur per sisi dengan margin-top, margin-right, margin-bottom, dan margin-left, atau menggunakan penulisan singkat (shorthand) seperti margin: 10px 15px; yang berarti jarak 10 piksel untuk sumbu vertikal (atas dan bawah) dan 15 piksel untuk sumbu horizontal (kanan dan kiri).
+
+- Border:
+Border adalah garis yang mengelilingi elemen, berfungsi untuk membatasi elemen dari ruang di sekitarnya. Border bisa dikustomisasi dengan properti ketebalan (border-width), gaya garis (border-style), dan warna (border-color). Misalnya, border: 2px solid black; berarti elemen tersebut akan memiliki garis batas berketebalan 2 piksel, dengan gaya garis solid (garis lurus tanpa pola), dan berwarna hitam. Border juga bisa diterapkan pada setiap sisi secara terpisah, misalnya dengan border-top, border-right, border-bottom, dan border-left. Selain itu, border dapat dikreasikan dengan berbagai gaya seperti dotted, dashed, double, atau groove untuk menambah variasi visual.
+
+- Padding:
+Padding adalah ruang di dalam elemen, antara konten utama (teks atau gambar) dan garis batas (border) elemen. Padding membantu mengatur jarak antara konten dengan tepi elemen, sehingga membuat konten terlihat lebih rapi dan tidak terlalu mepet dengan batas elemen. Misalnya, padding: 10px; berarti memberikan jarak 10 piksel di dalam elemen dari setiap sisi. Sama seperti margin, padding juga bisa diatur per sisi, seperti padding-top, padding-right, padding-bottom, dan padding-left. Nilai padding mempengaruhi ukuran elemen secara keseluruhan, karena menambah ruang di dalam elemen.
+
+Secara visual, urutannya adalah sebagai berikut:
+Margin (paling luar) → Border → Padding → Konten (paling dalam).
+
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+
+Flexbox dan Grid Layout adalah dua metode layout CSS yang dirancang untuk mempermudah pengaturan tata letak elemen di halaman web, masing-masing dengan tujuan dan kegunaan yang berbeda.
+
+Flexbox (Flexible Box Layout):
+Flexbox adalah metode tata letak satu dimensi yang berfungsi untuk mengatur elemen dalam satu baris (horizontal) atau satu kolom (vertikal). Dengan menggunakan flexbox, developer dapat dengan mudah mengatur ukuran, orientasi, dan distribusi ruang antar elemen, termasuk menentukan seberapa besar elemen tertentu dibanding elemen lainnya. Flexbox sangat berguna untuk membangun tata letak yang responsif, seperti menu navigasi, baris tombol, atau daftar item, karena elemen di dalam flex container dapat beradaptasi dengan ukuran layar yang berbeda.
+
+Grid Layout:
+Grid Layout adalah metode tata letak dua dimensi yang memungkinkan pengaturan elemen dalam baris dan kolom sekaligus. Berbeda dengan flexbox, Grid Layout memberikan kontrol yang lebih detail untuk menyusun elemen-elemen dalam pola yang kompleks, seperti layout halaman web dengan header, sidebar, konten utama, dan footer. Grid Layout memungkinkan pembagian area atau ruang yang lebih fleksibel, mendukung pembuatan grid responsif yang dapat beradaptasi dengan ukuran layar. Grid Layout cocok untuk struktur yang lebih kompleks, seperti galeri gambar atau halaman dengan banyak konten.
+ 
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+Yang saya lakukan di tahap awal adalah dengan membuat fitur edit product dan delete product. Fitur edit product saya lakukan dengan cara membuat fungsi edit_product pada views.py dan menambahkan path url edit product pada url patterns di urls.py. Begitupun untuk fitur delete, dengan membuat fungsi delete_product yang menerima parameter request dan id pada views.py lalu menambahkan path url delete product pada url patterns di urls.py.
+
+Selanjutnya saya membuat file html untuk fitur yang saya buat sebelumnya, yaiut fitur edit product. Selanjutnya saya juga membuat file html untuk navigation bar.
+Setelah itu, saya melakukan konfigurasi  static files pada settings.py dengan menambahkan middleware WhiteNoise dan mengonfigurasikan STATIC_ROOT, STATICFILES_DIRS, dan STATIC_URL.
+
+Setelah elemen yang diperlukan sudah memiliki fungsionalitas, selanjutnya saya menambahkan styles dengan Tailwind. Hal ini saya lakukan dengan menambahkan folder static yang berisi global.css dan script tailwind ke base.html
+
+Langkah selanjutnya yang saya lakukan yaitu melakukan styling pada halaman2 html yang sudah saya buat baik di template pada main, juga pada template di main direktori. Tak lupa, saya juga membuat file styling untuk card informasi produk serta info pengguna.
+
+Langkah yang teakhir yaitu memastikan semua fungsi berfungsi dengan baik, dan memiliki ux yang baik juga.
+
+Terakhir, melakukan push ke github dan pws.
+
 
