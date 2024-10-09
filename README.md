@@ -237,4 +237,63 @@ Langkah yang teakhir yaitu memastikan semua fungsi berfungsi dengan baik, dan me
 
 Terakhir, melakukan push ke github dan pws.
 
+TUGAS 6
 
+1.	Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+   
+JavaScript merupakan bahasa pemrograman multi-paradigma tingkat tinggi lintas platform (cross-platform high-level multi-paradigm programming language).
+Adapun manfaat atau kelebihan dari penggunaan JavaScript dalam pengembangan aplikasi web adalah:
+   1.	Memungkinkan interaksi yang lebih dinamis
+Halaman statis terutama menampilkan informasi dalam tata letak tetap dan tidak melakukan semua yang kita harapkan saat ini dari situs web modern. JavaScript muncul sebagai teknologi sisi peramban untuk menjadikan aplikasi web lebih dinamis. Dengan JavaScript, browser dapat merespons interaksi pengguna dan mengubah tata letak konten di halaman web. Hal itu memungkinkan halaman web terasa lebih hidup dan responsif terhadap pengguna.
+   2. Eksekusi di Client-Side
+Salah satu keunikan JavaScript adalah kemampuannya untuk dijalankan di sisi klien, langsung di peramban pengguna. Ini mengurangi beban pada server karena proses komputasi dilakukan di perangkat pengguna. Sebagai hasilnya, halaman web bisa berfungsi lebih cepat dan memberikan pengalaman yang lebih baik, karena perubahan di halaman dapat dilakukan tanpa harus mengirim permintaan ke server.
+   3. Validasi dan Manajemen Data di Frontend
+JavaScript memungkinkan validasi form atau data di sisi klien sebelum data dikirim ke server. Ini menghemat waktu dan sumber daya, serta membantu mengurangi kesalahan input. Misalnya, jika pengguna lupa mengisi field dalam form atau memasukkan data yang salah, kesalahan dapat langsung diidentifikasi dan diperbaiki tanpa harus menunggu respons dari server.
+   4. Ecosystem yang Luas
+JavaScript memiliki ekosistem yang besar dengan banyak pustaka dan framework (seperti React, Angular, dan Vue.js) yang mempercepat proses pengembangan. JavaScript library, dapat digunakan untuk memanipulasi DOM, membuat formular, menulis dungsi teks dan matematika, dll.
+
+Sumber:
+https://aws.amazon.com/id/what-is/javascript/#:~:text=JavaScript%20muncul%20sebagai%20teknologi%20sisi,letak%20konten%20di%20halaman%20web. 
+https://pbp-fasilkom-ui.github.io/ganjil-2025/docs/tutorial-5 
+https://bis-sby.telkomuniversity.ac.id/javascript-keunggulan-bahasa-pemrograman-yang-masih-ramai-hingga-saat-ini/ 
+
+2.	 Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+   
+Ketika kita menggunakan fetch() untuk melakukan permintaan HTTP, proses tersebut bersifat asinkron, artinya JavaScript akan melanjutkan eksekusi kode lainnya sambil menunggu respons dari server. Jika kita menggunakan await pada fetch(), kita memberitahu JavaScript untuk menunggu hingga proses permintaan HTTP selesai dan hasilnya tersedia sebelum melanjutkan eksekusi kode berikutnya. Dengan demikian, kita dapat bekerja dengan hasil dari fetch() tanpa harus menggunakan callback atau then secara eksplisit.
+Jika await tidak digunakan, JavaScript akan melanjutkan eksekusi ke baris berikutnya tanpa menunggu hasil dari fetch(), sehingga terjadi overlap pada penyimpanan variabel. Variabel yang seharusnya menyimpan hasil dari fetch() mungkin belum berisi nilai yang diharapkan, yang dapat menyebabkan hasil yang salah atau tidak sesuai dengan ekspektasi.
+https://pbp-fasilkom-ui.github.io/ganjil-2025/docs/tutorial-5 
+https://id.javascript.info/async-await 
+
+3.	 Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+   
+CSRF (Cross-Site Request Forgery) adalah jenis serangan di mana permintaan tidak sah dikirim ke server dengan memanfaatkan identitas pengguna yang sudah terautentikasi. Dalam Django, untuk melindungi aplikasi dari serangan ini, setiap permintaan POST sebaiknya menyertakan csrf_token, yaitu token unik yang memastikan permintaan berasal dari sumber yang sah, seperti pengguna yang berinteraksi langsung dengan situs web.
+Decorator csrf_exempt berfungsi untuk mengecualikan pemeriksaan csrf_token pada fungsi view tertentu, terutama ketika menangani permintaan AJAX POST. Jika csrf_exempt tidak digunakan, permintaan AJAX POST yang tidak menyertakan csrf_token dapat ditolak oleh Django karena dianggap melanggar mekanisme perlindungan CSRF. 
+Penggunaan csrf_exempt memungkinkan Django untuk menerima permintaan AJAX POST tanpa melakukan validasi token CSRF. Sehingga pengguna tidak mendapat respon yang diharapkan.
+https://pbp-fasilkom-ui.github.io/ganjil-2025/docs/tutorial-5 
+https://www.stackhawk.com/blog/django-csrf-protection-guide/ 
+
+4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+
+Pembersihan data di backend sangat penting untuk menjaga keamanan dan integritas data. Jika hanya dilakukan di frontend, pengguna bisa memanipulasi kode dan mengirim data berbahaya ke server. Dengan pembersihan di backend, kita memastikan data yang diterima aman dan tidak bisa dimanipulasi. Ini juga melindungi data sensitif agar tidak terlihat oleh pihak yang tidak berwenang, serta memastikan konsistensi data dari berbagai sumber, seperti frontend atau API.
+Sumber:
+https://www.geeksforgeeks.org/the-ultimate-guide-to-secure-web-development-frontend-best-practices/
+
+5.	 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+Tugas 6 saya diminta untuk mengimplementasikan AJAX pada aplikasi yang telah saya buat pada tugas sebelumnya.
+
+Berikut adalah step yang saya lakukan: 
+Langkah pertama yang saya lakukan adalah menambahkan pesan error untuk login yang gagal, ktika pengguna mencoba login namun username dan passwordnya tidak sesuai. Untuk mengimplementasikannya, saya menambahkan blok `else` dalam fungsi login setelah pengecekan `form.is_valid()`, yang berisi perintah untuk menampilkan pesan error dengan `messages.error(request, "Invalid username or password. Please try again.")`. 
+
+Selanjutnya, saya membuat sebuah fungsi baru bernama `add_product_ajax` untuk menangani permintaan POST ketika pengguna ingin menambahkan produk secara asinkron dengan AJAX. Agar tidak ada kendala CSRF yang mungkin muncul, saya menambahkan decorator `@csrf_exempt` dan `@require_POST` pada fungsi tersebut. Karena input dari pengguna berpotensi mengandung tag HTML yang berbahaya, saya juga menambahkan langkah keamanan dengan membersihkan tag HTML pada input produk, yaitu nama dan deskripsi produk, menggunakan `strip_tags`. Dengan demikian, saya bisa memastikan bahwa input dari pengguna aman.
+
+Lalu, untuk mendukung fungsi `add_product_ajax`, saya perlu menambahkan routing baru di `urls.py`, sehingga fungsi ini dapat diakses melalui URL tertentu. Setelah itu, saya membuat fungsi di sisi frontend yang melakukan fetching data produk yang dimiliki pengguna dan menampilkannya di halaman utama. Fungsi ini saya panggil dalam `refreshProductEntries()` agar setiap kali pengguna menambahkan produk baru, tampilan produk bisa diperbarui secara otomatis tanpa harus melakukan reload halaman.
+
+Untuk memudahkan pengguna dalam menambahkan produk, saya merancang sebuah modal yang berisi form. Modal ini membantu pengguna memasukkan detail produk, seperti nama, deskripsi, harga, dan jumlah produk, langsung dari halaman utama. Untuk memanipulasi tampilan modal, saya membuat dua fungsi JavaScript, yaitu `showModal()` untuk menampilkan modal dan `hideModal()` untuk menutup modal setelah produk ditambahkan atau ketika pengguna memutuskan untuk membatalkan proses penambahan produk.
+
+Di halaman utama, saya menambahkan tombol “Add Product by AJAX” yang akan memicu modal untuk menambahkan produk. Ketika tombol ini diklik, modal akan muncul, dan pengguna bisa langsung mengisi informasi produk baru. Setelah pengguna mengisi form dan menekan submit, fungsi `addProductEntry()` akan mengirimkan data produk melalui permintaan POST ke server. Jika data produk berhasil ditambahkan, fungsi ini akan memanggil `refreshProductEntries()` untuk memperbarui daftar produk yang sudah ada tanpa perlu memuat ulang halaman. 
+
+Selain itu, saya memastikan bahwa form dalam modal memiliki event listener yang memanggil `addProductEntry()` saat form disubmit, sehingga form bisa diproses tanpa reload. Untuk validasi input di backend, saya menambahkan fungsi `clean_name()` dan `clean_description()` di `form.py` guna memeriksa apakah input produk sesuai dengan aturan yang ditetapkan, seperti panjang maksimal atau format teks yang diterima.
+
+Langkah selanjutnya, untuk melindungi aplikasi dari kemungkinan injeksi HTML di sisi frontend, saya menggunakan library DOMPurify dalam template `main.html`. Dengan library ini, input yang diberikan oleh pengguna akan disaring secara otomatis, memastikan keamanan dari injeksi HTML berbahaya.
+
+Terakhir, saya melakukan push ke github dan pws
