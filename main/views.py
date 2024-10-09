@@ -15,6 +15,7 @@ from django.shortcuts import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils.html import strip_tags
+from django.http import JsonResponse
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -118,19 +119,52 @@ def delete_product(request, id):
 @csrf_exempt
 @require_POST
 def add_product_ajax(request):
-    name = strip_tags(request.POST.get("name")) 
+    name = strip_tags(request.POST.get("name"))
     price = request.POST.get("price")
     description = strip_tags(request.POST.get("description"))
     stock = request.POST.get("stock")
     rating = request.POST.get("rating")
     user = request.user
 
+    # Validasi data
+    errors = []
+    if not name:
+        errors.append("Name is required.")
+    if not price or not price.isdigit():
+        errors.append("Price is required and must be a number.")
+    if not description:
+        errors.append("Description is required.")
+    if not stock or not stock.isdigit():
+        errors.append("Stock is required and must be a number.")
+    if not rating or not rating.replace('.', '', 1).isdigit():
+        errors.append("Rating is required and must be a number.")
+    else:
+        # Convert rating to float and validate range
+        rating_value = float(rating)
+        if rating_value < 1 or rating_value > 10:
+            errors.append("Rating must be between 1 and 10.")
+
+    # Jika ada error, kembalikan respons dengan pesan error
+    if errors:
+        return JsonResponse({"errors": errors}, status=400)
+
+    # Simpan produk baru jika semua input valid
     new_product = Product(
         name=name, price=price,
         description=description,
-        stock=stock, rating=rating,
+        stock=stock, rating=rating_value,
         user=user
     )
     new_product.save()
-
-    return HttpResponse(b"CREATED", status=201)
+    
+    # Kirim respons sukses
+    return JsonResponse({
+        "message": "Product added successfully",
+        "product": {
+            "name": new_product.name,
+            "price": new_product.price,
+            "description": new_product.description,
+            "stock": new_product.stock,
+            "rating": new_product.rating,
+        }
+    }, status=201)

@@ -54,6 +54,7 @@
               <span class="sr-only">Close modal</span>
             </button>
           </div>
+          <div id="error-messages" class="mb-4"></div>
           <!-- Modal body -->
           <div class="px-6 py-4 space-y-6 form-style">
             <form id="productForm">
@@ -82,7 +83,7 @@
           <!-- Modal footer -->
           <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 p-6 border-t border-gray-200 rounded-b justify-center md:justify-end">
             <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg" id="cancelButton">Cancel</button>
-            <button type="submit" id="submitProductEntry" form="productForm" class="bg-indigo-700 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg">Save</button>
+            <button type="submit" id="submitProductEntry" form="productForm" class="bg-[#f7b733] hover:bg-[#f9b533] text-white font-bold py-2 px-4 rounded-lg">Save</button>
           </div>
         </div>
       </div>
@@ -92,63 +93,62 @@
         return fetch("{% url 'main:show_json' %}").then((res) => res.json())
     }
     async function refreshProductEntries() {
-        document.getElementById("product_entry_cards").innerHTML = "";
-        document.getElementById("product_entry_cards").className = "";
-        const products = await getProductEntries();
-        let htmlString = "";
-        let classNameString = "";
-
-        if (products.length === 0) {
-            classNameString = "flex flex-col items-center justify-center min-h-[24rem] p-6";
-            htmlString = `
-                <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
-                    <img src="{% static 'image/sedih.png' %}" alt="No Product" class="w-32 h-32 mb-4"/>
-                    <p class="text-center text-[#141850]  mt-4">Sorry, there is no product in Ice Creamy</p>
-                </div>
-            `;
-        }
-        else {
-            classNameString = "columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full"
-            products.forEach((item) => {
-                const name = DOMPurify.sanitize(item.fields.name);
-                const description = DOMPurify.sanitize(item.fields.description);
-                    htmlString += `
-                     <div class="relative break-inside-avoid">
-                        <div class="relative top-5 bg-[#fae5df] shadow-md rounded-lg mb-6 break-inside-avoid flex flex-col border-2 border-[#f5cac2] transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                            <div class="p-4">
-                                <h3 class="font-bold text-xl mb-2">${name}</h3>
-                                <p class="font-bold text-xl mb-2">Rp${item.fields.price}</p>
-                                <p class="font-semibold text-lg mb-2">Product Description</p>
-                                <p class="text-gray-700 mb-2">
-                                    <span class="bg-[linear-gradient(to_bottom,transparent_0%,transparent_calc(100%_-_1px),#f5cac2_calc(100%_-_1px))] bg-[length:100%_1.5rem] pb-1">${description}</span>
-                                </p>
-                                <div class="mt-4">
-                                    <p class="text-gray-700 mb-2">Stock: ${item.fields.stock}</p>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#303179] mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674h4.917c.96 0 1.36 1.24.588 1.81l-3.977 2.887 1.518 4.674c.3.921-.755 1.688-1.54 1.156L10 13.719l-3.977 2.887c-.784.532-1.839-.235-1.54-1.156l1.518-4.674L2.524 9.411c-.772-.57-.372-1.81.588-1.81h4.917l1.518-4.674z" />
-                                        </svg>
-                                        <p class="text-gray-700">${item.fields.rating}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-2 right-2 flex space-x-1">
-                            <a href="/edit-product/${item.pk}" class="bg-[#ed7966] hover:bg-[#ed7966]/80 text-white rounded-full p-2 transition duration-300 shadow-md">
-                            Edit
-                            </a>
-                            <a href="/delete/${item.pk}" class="bg-[#303179] hover:bg-[#141850] text-white rounded-full p-2 transition duration-300 shadow-md">
-                            Delete
-                            </a>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-        document.getElementById("product_entry_cards").className = classNameString;
-        document.getElementById("product_entry_cards").innerHTML = htmlString;
-    }
-    refreshProductEntries();
+      document.getElementById("product_entry_cards").innerHTML = "";
+      document.getElementById("product_entry_cards").className = "";
+      const products = await getProductEntries();
+      let htmlString = "";
+      let classNameString = "";
+  
+      if (products.length === 0) {
+          classNameString = "flex flex-col items-center justify-center min-h-[24rem] p-6";
+          htmlString = `
+              <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+                  <img src="{% static 'image/sedih.png' %}" alt="No Product" class="w-32 h-32 mb-4"/>
+                  <p class="text-center text-[#141850] mt-4">Sorry, there is no product in Ice Creamy</p>
+              </div>
+          `;
+      } else {
+          classNameString = "columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full";
+          products.forEach((item) => {
+              const name = DOMPurify.sanitize(item.fields.name);
+              const description = DOMPurify.sanitize(item.fields.description);
+              htmlString += `
+                  <div class="relative break-inside-avoid">
+                      <div class="relative top-5 bg-[#fff9db] shadow-md rounded-lg mb-6 break-inside-avoid flex flex-col border-2 border-[#ffd966] transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                          <div class="p-4">
+                              <h3 class="font-bold text-xl mb-2 text-[#b58900]">${name}</h3>
+                              <p class="font-bold text-xl mb-2 text-[#c49d00]">Rp${item.fields.price}</p>
+                              <p class="font-semibold text-lg mb-2 text-[#b58900]">Product Description</p>
+                              <p class="text-gray-700 mb-2">
+                                  <span class="bg-[linear-gradient(to_bottom,transparent_0%,transparent_calc(100%_-_1px),#ffd966_calc(100%_-_1px))] bg-[length:100%_1.5rem] pb-1">${description}</span>
+                              </p>
+                              <div class="mt-4">
+                                  <p class="text-gray-700 mb-2">Stock: ${item.fields.stock}</p>
+                                  <div class="flex items-center">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#b58900] mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674h4.917c.96 0 1.36 1.24.588 1.81l-3.977 2.887 1.518 4.674c.3.921-.755 1.688-1.54 1.156L10 13.719l-3.977 2.887c-.784.532-1.839-.235-1.54-1.156l1.518-4.674L2.524 9.411c-.772-.57-.372-1.81.588-1.81h4.917l1.518-4.674z" />
+                                      </svg>
+                                      <p class="text-gray-700">${item.fields.rating}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="absolute bottom-2 right-2 flex space-x-1">
+                          <a href="/edit-product/${item.pk}" class="bg-[#ffcc80] hover:bg-[#ffc34a] text-white rounded-full p-2 transition duration-300 shadow-md">
+                              Edit
+                          </a>
+                          <a href="/delete/${item.pk}" class="bg-[#ffab00] hover:bg-[#ffa000] text-white rounded-full p-2 transition duration-300 shadow-md">
+                              Delete
+                          </a>
+                      </div>
+                  </div>
+              `;
+          });
+      }
+      document.getElementById("product_entry_cards").className = classNameString;
+      document.getElementById("product_entry_cards").innerHTML = htmlString;
+  }
+      refreshProductEntries();
     const modal = document.getElementById('crudModal');
     const modalContent = document.getElementById('crudModalContent');
 
@@ -209,16 +209,28 @@
         descriptionInput.value = DOMPurify.sanitize(descriptionInput.value);
 
         fetch("{% url 'main:add_product_ajax' %}", {
-        method: "POST",
-        body: new FormData(document.querySelector('#productForm')),
-        })
-        .then(response => {
-          if (response.ok) {
-              refreshProductEntries();
-              hideModal();
-            } 
-          })
-
+          method: "POST",
+          body: new FormData(document.querySelector('#productForm')),
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.product) {
+              refreshProductEntries(); // Refresh daftar produk setelah produk ditambahkan
+              hideModal(); // Tutup modal setelah produk berhasil ditambahkan
+          } else if (data.errors) {
+              // Jika ada error, tampilkan pesan di bawah form
+              const errorContainer = document.getElementById("error-messages");
+              errorContainer.innerHTML = ""; // Kosongkan pesan error sebelumnya
+              data.errors.forEach(error => {
+                  const errorMessage = document.createElement("p");
+                  errorMessage.className = "text-red-500 text-sm"; // Style untuk pesan error
+                  errorMessage.innerText = error;
+                  errorContainer.appendChild(errorMessage);
+              });
+          }
+      })
+      .catch(error => console.error('Error:', error));
+      
 
         document.getElementById("productForm").reset(); 
         document.querySelector("[data-modal-toggle='crudModal']").click();
